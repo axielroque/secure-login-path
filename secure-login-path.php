@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Secure Login Path
-Plugin URI: https://github.com/axielroque
+Plugin URI: https://github.com/axielroque/secure-login-path
 Description: Secure and customize the WordPress login URL without modifying core files.
 Version: 1.1.0
 Author: Axiel Roque
