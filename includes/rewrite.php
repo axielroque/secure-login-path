@@ -88,7 +88,9 @@ function slp_maybe_render_login() {
         $interim_login = false;
         $action = isset( $_REQUEST['action'] ) ? $_REQUEST['action'] : 'login';
         $user_login = '';
-        
+        nocache_headers();
+        header( 'X-Robots-Tag: noindex, nofollow', true );
+
         require_once ABSPATH . 'wp-login.php';
         exit;
     }
