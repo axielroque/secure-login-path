@@ -51,6 +51,7 @@ Hide and protect the default WordPress login and admin URLs by defining a secret
 - `slp_forbidden_login_slugs` (array): extend or override forbidden slugs.
 - `slp_min_login_slug_length` (int): set the minimum slug length.
 - `slp_allowed_admin_scripts` (array): allow specific admin scripts for non‑logged‑in requests (default: `admin-ajax.php`, `admin-post.php`).
+- `slp_allowed_login_actions` (array): extend allowed `wp-login.php` actions when the default login URL is blocked (default includes: `lostpassword`, `rp`, `resetpass`, `register`, `logout`, `postpass`, `verifyemail`, `confirm_admin_email`, `reauth`). Receives current `$action` as second argument.
 
 ## Recovery Mode
 
