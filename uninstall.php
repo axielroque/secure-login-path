@@ -1,0 +1,22 @@
+<?php
+// If uninstall not called from WordPress, then exit.
+if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
+    exit;
+}
+
+// Option name(s) used by the plugin
+$option_name = 'slp_login_slug';
+
+if ( is_multisite() ) {
+    $sites = function_exists( 'get_sites' ) ? get_sites() : array();
+    if ( $sites ) {
+        foreach ( $sites as $site ) {
+            $blog_id = is_object( $site ) ? $site->blog_id : (int) $site['blog_id'];
+            switch_to_blog( $blog_id );
+            delete_option( $option_name );
+            restore_current_blog();
+        }
+    }
+} else {
+    delete_option( $option_name );
+}

@@ -1,0 +1,42 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: secure-login-path 1.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-12-29 00:00+0000\n"
+"PO-Revision-Date: 2025-12-29 00:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: English\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Cascade\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: includes/settings.php:9 includes/settings.php:10 includes/settings.php:64
+msgid "Secure Login Path"
+msgstr "Secure Login Path"
+
+#: includes/settings.php:68
+msgid "Login URL:"
+msgstr "Login URL:"
+
+#: includes/settings.php:83
+msgid "Generate Random Path"
+msgstr "Generate Random Path"
+
+#: includes/settings.php:89
+msgid "Recovery mode:"
+msgstr "Recovery mode:"
+
+#: includes/settings.php:94
+msgid "Developed by"
+msgstr "Developed by"
+
+#: includes/settings.php:95
+msgid "GitHub"
+msgstr "GitHub"
+
+#: includes/settings.php:32
+msgid "Invalid login path. Choose a longer, non-obvious value."
+msgstr "Invalid login path. Choose a longer, non-obvious value."
