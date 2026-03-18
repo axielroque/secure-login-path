@@ -16,11 +16,6 @@ defined( 'ABSPATH' ) || exit;
 define( 'SLP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SLP_URL', plugin_dir_url( __FILE__ ) );
 
-// Load text domain (i18n)
-add_action( 'plugins_loaded', function() {
-    load_plugin_textdomain( 'secure-login-path', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
-} );
-
 // Load bootstrap
 require_once SLP_PATH . 'includes/bootstrap.php';
 
