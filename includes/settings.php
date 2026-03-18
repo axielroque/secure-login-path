@@ -55,14 +55,14 @@ function slp_sanitize_login_slug( $value ) {
     return $value;
 }
 
-// 🚀 Flush automático cuando el slug cambia
+// Automatically flush rewrite rules when the slug changes
 add_action( 'update_option_slp_login_slug', 'slp_flush_on_slug_change', 10, 2 );
 function slp_flush_on_slug_change( $old_value, $new_value ) {
     if ( $old_value !== $new_value ) {
-        // Registrar la regla ANTES de flush
+        // Register the rule BEFORE flushing
         slp_register_rewrite_rule();
 
-        // ⚠️ Flush con delay para que WP reconozca la regla
+        // Flush on shutdown so WordPress can recognize the rule
         add_action( 'shutdown', function() {
             flush_rewrite_rules();
         } );
@@ -70,12 +70,12 @@ function slp_flush_on_slug_change( $old_value, $new_value ) {
 }
 
 function slp_render_settings_page() {
-    // Generar slug random si se presiona botón
+    // Generate a random slug if the button was pressed
     if ( isset( $_POST['slp_generate'] ) ) {
         if ( current_user_can( 'manage_options' ) && isset( $_POST['slp_generate_nonce'] ) && wp_verify_nonce( $_POST['slp_generate_nonce'], 'slp_generate_action' ) ) {
             update_option( 'slp_login_slug', slp_generate_random_slug() );
         }
-        // No es necesario flush aquí porque update_option dispara nuestro hook
+        // No flush needed here because update_option triggers our hook
     }
 
     $slug = slp_get_login_slug();
