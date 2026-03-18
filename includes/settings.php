@@ -72,7 +72,8 @@ function slp_flush_on_slug_change( $old_value, $new_value ) {
 function slp_render_settings_page() {
     // Generate a random slug if the button was pressed
     if ( isset( $_POST['slp_generate'] ) ) {
-        if ( current_user_can( 'manage_options' ) && isset( $_POST['slp_generate_nonce'] ) && wp_verify_nonce( $_POST['slp_generate_nonce'], 'slp_generate_action' ) ) {
+        $nonce = isset( $_POST['slp_generate_nonce'] ) ? sanitize_text_field( wp_unslash( $_POST['slp_generate_nonce'] ) ) : '';
+        if ( current_user_can( 'manage_options' ) && $nonce && wp_verify_nonce( $nonce, 'slp_generate_action' ) ) {
             update_option( 'slp_login_slug', slp_generate_random_slug() );
         }
         // No flush needed here because update_option triggers our hook
