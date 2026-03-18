@@ -5,7 +5,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Option name(s) used by the plugin
-$option_name = 'slp_login_slug';
+$option_names = array( 'slp_login_slug', 'slp_block_behavior' );
 
 if ( is_multisite() ) {
     $sites = function_exists( 'get_sites' ) ? get_sites() : array();
@@ -13,10 +13,14 @@ if ( is_multisite() ) {
         foreach ( $sites as $site ) {
             $blog_id = is_object( $site ) ? $site->blog_id : (int) $site['blog_id'];
             switch_to_blog( $blog_id );
-            delete_option( $option_name );
+            foreach ( $option_names as $option_name ) {
+                delete_option( $option_name );
+            }
             restore_current_blog();
         }
     }
 } else {
-    delete_option( $option_name );
+    foreach ( $option_names as $option_name ) {
+        delete_option( $option_name );
+    }
 }

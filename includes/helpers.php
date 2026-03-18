@@ -21,14 +21,22 @@ function slp_send_block_response() {
                 nocache_headers();
                 status_header( 404 );
             }
-            wp_die( 'Not Found', 'Not Found', [ 'response' => 404 ] );
+            wp_die(
+                esc_html__( 'Not Found', 'secure-login-path' ),
+                esc_html__( 'Not Found', 'secure-login-path' ),
+                [ 'response' => 404 ]
+            );
             break;
         case '403':
             if ( ! headers_sent() ) {
                 nocache_headers();
                 status_header( 403 );
             }
-            wp_die( 'Forbidden', 'Forbidden', [ 'response' => 403 ] );
+            wp_die(
+                esc_html__( 'Forbidden', 'secure-login-path' ),
+                esc_html__( 'Forbidden', 'secure-login-path' ),
+                [ 'response' => 403 ]
+            );
             break;
         case 'redirect':
         default:
