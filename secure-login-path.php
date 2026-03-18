@@ -12,19 +12,19 @@ Text Domain: secure-login-path
 
 defined( 'ABSPATH' ) || exit;
 
-// Constantes del plugin
+// Plugin constants
 define( 'SLP_PATH', plugin_dir_path( __FILE__ ) );
 define( 'SLP_URL', plugin_dir_url( __FILE__ ) );
 
-// Cargar text domain (i18n)
+// Load text domain (i18n)
 add_action( 'plugins_loaded', function() {
     load_plugin_textdomain( 'secure-login-path', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 } );
 
-// Cargar bootstrap
+// Load bootstrap
 require_once SLP_PATH . 'includes/bootstrap.php';
 
-// Activación
+// Activation
 register_activation_hook( __FILE__, 'slp_activate' );
 function slp_activate() {
     if ( ! get_option( 'slp_login_slug' ) ) {
@@ -38,7 +38,7 @@ function slp_activate() {
     flush_rewrite_rules();
 }
 
-// Desactivación
+// Deactivation
 register_deactivation_hook( __FILE__, 'slp_deactivate' );
 function slp_deactivate() {
     flush_rewrite_rules();

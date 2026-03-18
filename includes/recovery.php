@@ -2,7 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
- * Modo recovery para evitar lockout
+ * Recovery mode to avoid lockout
  */
 add_filter( 'login_url', 'slp_append_recovery_param', 10, 1 );
 function slp_append_recovery_param( $url ) {
