@@ -1,4 +1,4 @@
-=== Login Cloak – Hide & Protect Your WordPress Login URL ===
+=== Login Cloak – Hide & Protect Your Login URL ===
 Contributors: axielroque
 Tags: security, login, admin, hardening
 Requires at least: 6.0
