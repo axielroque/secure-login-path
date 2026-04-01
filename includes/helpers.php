@@ -22,7 +22,7 @@ function lcloak_is_recovery_mode() {
 }
 
 function lcloak_send_block_response() {
-    $behavior = (string) get_option( 'lcloak_block_behavior', '' );
+    $behavior = (string) get_option( 'lcloak_block_behavior', 'redirect' );
     if ( $behavior === '' ) {
         $behavior = (string) get_option( 'slp_block_behavior', 'redirect' );
     }
@@ -33,8 +33,8 @@ function lcloak_send_block_response() {
                 status_header( 404 );
             }
             wp_die(
-                esc_html__( 'Not Found', 'login-cloak' ),
-                esc_html__( 'Not Found', 'login-cloak' ),
+                esc_html__( 'Not Found', 'axiel-secure-login-path' ),
+                esc_html__( 'Not Found', 'axiel-secure-login-path' ),
                 [ 'response' => 404 ]
             );
             break;
@@ -44,8 +44,8 @@ function lcloak_send_block_response() {
                 status_header( 403 );
             }
             wp_die(
-                esc_html__( 'Forbidden', 'login-cloak' ),
-                esc_html__( 'Forbidden', 'login-cloak' ),
+                esc_html__( 'Forbidden', 'axiel-secure-login-path' ),
+                esc_html__( 'Forbidden', 'axiel-secure-login-path' ),
                 [ 'response' => 403 ]
             );
             break;

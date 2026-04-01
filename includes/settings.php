@@ -6,8 +6,8 @@ add_action( 'admin_init', 'lcloak_register_settings' );
 
 function lcloak_add_settings_page() {
     add_options_page(
-        __( 'Login Cloak', 'login-cloak' ),
-        __( 'Login Cloak', 'login-cloak' ),
+        __( 'Login Cloak', 'axiel-secure-login-path' ),
+        __( 'Login Cloak', 'axiel-secure-login-path' ),
         'manage_options',
         'login-cloak',
         'lcloak_render_settings_page'
@@ -65,7 +65,7 @@ function lcloak_sanitize_login_slug( $value ) {
     $min_length = (int) apply_filters( 'lcloak_min_login_slug_length', 6 );
     $min_length = (int) apply_filters( 'slp_min_login_slug_length', $min_length );
     if ( $value === '' || in_array( $value, $forbidden, true ) || strlen( $value ) < $min_length ) {
-        add_settings_error( 'lcloak_settings', 'lcloak_invalid_slug', __( 'Invalid login path. Choose a longer, non-obvious value.', 'login-cloak' ), 'error' );
+        add_settings_error( 'lcloak_settings', 'lcloak_invalid_slug', __( 'Invalid login path. Choose a longer, non-obvious value.', 'axiel-secure-login-path' ), 'error' );
         return (string) get_option( 'lcloak_login_slug' );
     }
     return $value;
@@ -111,13 +111,13 @@ function lcloak_render_settings_page() {
     $behavior = get_option( 'lcloak_block_behavior', 'redirect' );
     ?>
     <div class="wrap">
-        <h1><?php echo esc_html__( 'Login Cloak', 'login-cloak' ); ?></h1>
+        <h1><?php echo esc_html__( 'Login Cloak', 'axiel-secure-login-path' ); ?></h1>
         <?php settings_errors( 'lcloak_settings' ); ?>
 
         <p>
-            <strong><?php echo esc_html__( 'Login URL:', 'login-cloak' ); ?></strong><br>
+            <strong><?php echo esc_html__( 'Login URL:', 'axiel-secure-login-path' ); ?></strong><br>
             <code><?php echo esc_url( home_url( '/' . $slug . '/' ) ); ?></code>
-            <button type="button" class="button lcloak-copy" data-url="<?php echo esc_attr( home_url( '/' . $slug . '/' ) ); ?>" data-success="<?php echo esc_attr__( 'Copied!', 'login-cloak' ); ?>" data-error="<?php echo esc_attr__( 'Copy failed', 'login-cloak' ); ?>"><?php echo esc_html__( 'Copy', 'login-cloak' ); ?></button>
+            <button type="button" class="button lcloak-copy" data-url="<?php echo esc_attr( home_url( '/' . $slug . '/' ) ); ?>" data-success="<?php echo esc_attr__( 'Copied!', 'axiel-secure-login-path' ); ?>" data-error="<?php echo esc_attr__( 'Copy failed', 'axiel-secure-login-path' ); ?>"><?php echo esc_html__( 'Copy', 'axiel-secure-login-path' ); ?></button>
         </p>
 
         <form method="post" action="options.php">
@@ -127,11 +127,11 @@ function lcloak_render_settings_page() {
             <input type="text" name="lcloak_login_slug" value="<?php echo esc_attr( $slug ); ?>" />
 
             <p>
-                <strong><?php echo esc_html__( 'Block behavior:', 'login-cloak' ); ?></strong><br>
+                <strong><?php echo esc_html__( 'Block behavior:', 'axiel-secure-login-path' ); ?></strong><br>
                 <select name="lcloak_block_behavior">
-                    <option value="redirect" <?php selected( $behavior, 'redirect' ); ?>><?php echo esc_html__( 'Redirect to home (302)', 'login-cloak' ); ?></option>
-                    <option value="404" <?php selected( $behavior, '404' ); ?>><?php echo esc_html__( '404 Not Found', 'login-cloak' ); ?></option>
-                    <option value="403" <?php selected( $behavior, '403' ); ?>><?php echo esc_html__( '403 Forbidden', 'login-cloak' ); ?></option>
+                    <option value="redirect" <?php selected( $behavior, 'redirect' ); ?>><?php echo esc_html__( 'Redirect to home (302)', 'axiel-secure-login-path' ); ?></option>
+                    <option value="404" <?php selected( $behavior, '404' ); ?>><?php echo esc_html__( '404 Not Found', 'axiel-secure-login-path' ); ?></option>
+                    <option value="403" <?php selected( $behavior, '403' ); ?>><?php echo esc_html__( '403 Forbidden', 'axiel-secure-login-path' ); ?></option>
                 </select>
             </p>
             <?php submit_button(); ?>
@@ -140,20 +140,20 @@ function lcloak_render_settings_page() {
         <form method="post">
             <input type="hidden" name="lcloak_generate" value="1">
             <?php wp_nonce_field( 'lcloak_generate_action', 'lcloak_generate_nonce' ); ?>
-            <?php submit_button( __( 'Generate Random Path', 'login-cloak' ), 'secondary' ); ?>
+            <?php submit_button( __( 'Generate Random Path', 'axiel-secure-login-path' ), 'secondary' ); ?>
         </form>
 
         <hr>
 
         <p>
-            <strong><?php echo esc_html__( 'Recovery mode:', 'login-cloak' ); ?></strong><br>
+            <strong><?php echo esc_html__( 'Recovery mode:', 'axiel-secure-login-path' ); ?></strong><br>
             <code><?php echo esc_url( wp_login_url() . '?lcloak-recover=1' ); ?></code>
-            <button type="button" class="button lcloak-copy" data-url="<?php echo esc_attr( wp_login_url() . '?lcloak-recover=1' ); ?>" data-success="<?php echo esc_attr__( 'Copied!', 'login-cloak' ); ?>" data-error="<?php echo esc_attr__( 'Copy failed', 'login-cloak' ); ?>"><?php echo esc_html__( 'Copy', 'login-cloak' ); ?></button>
+            <button type="button" class="button lcloak-copy" data-url="<?php echo esc_attr( wp_login_url() . '?lcloak-recover=1' ); ?>" data-success="<?php echo esc_attr__( 'Copied!', 'axiel-secure-login-path' ); ?>" data-error="<?php echo esc_attr__( 'Copy failed', 'axiel-secure-login-path' ); ?>"><?php echo esc_html__( 'Copy', 'axiel-secure-login-path' ); ?></button>
         </p>
 
         <p style="color:#666;font-size:13px;">
-            <?php echo esc_html__( 'Developed by', 'login-cloak' ); ?> <strong>Axiel Roque</strong> ·
-            <a href="https://github.com/axielroque" target="_blank"><?php echo esc_html__( 'GitHub', 'login-cloak' ); ?></a>
+            <?php echo esc_html__( 'Developed by', 'axiel-secure-login-path' ); ?> <strong>Axiel Roque</strong> ·
+            <a href="https://github.com/axielroque" target="_blank"><?php echo esc_html__( 'GitHub', 'axiel-secure-login-path' ); ?></a>
         </p>
     </div>
     <script>

@@ -7,7 +7,7 @@ Version: 1.1.1
 Author: Axiel Roque
 Author URI: https://github.com/axielroque
 License: GPL v2 or later
-Text Domain: login-cloak
+Text Domain: axiel-secure-login-path
 */
 
 defined( 'ABSPATH' ) || exit;
