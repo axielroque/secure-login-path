@@ -22,7 +22,7 @@ function lcloak_is_recovery_mode() {
 }
 
 function lcloak_send_block_response() {
-    $behavior = (string) get_option( 'lcloak_block_behavior', 'redirect' );
+    $behavior = (string) get_option( 'lcloak_block_behavior', '' );
     if ( $behavior === '' ) {
         $behavior = (string) get_option( 'slp_block_behavior', 'redirect' );
     }
