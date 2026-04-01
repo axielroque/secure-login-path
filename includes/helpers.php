@@ -1,21 +1,31 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-function slp_get_login_slug() {
-    return sanitize_title( get_option( 'slp_login_slug' ) );
+function lcloak_get_login_slug() {
+    $slug = get_option( 'lcloak_login_slug' );
+    if ( ! $slug ) {
+        $slug = get_option( 'slp_login_slug' );
+    }
+    return sanitize_title( (string) $slug );
 }
 
-function slp_generate_random_slug() {
+function lcloak_generate_random_slug() {
     return wp_generate_password( 14, false );
 }
 
-function slp_is_recovery_mode() {
-    $recover = filter_input( INPUT_GET, 'slp-recover', FILTER_SANITIZE_NUMBER_INT );
+function lcloak_is_recovery_mode() {
+    $recover = filter_input( INPUT_GET, 'lcloak-recover', FILTER_SANITIZE_NUMBER_INT );
+    if ( $recover === null ) {
+        $recover = filter_input( INPUT_GET, 'slp-recover', FILTER_SANITIZE_NUMBER_INT );
+    }
     return $recover === '1';
 }
 
-function slp_send_block_response() {
-    $behavior = (string) get_option( 'slp_block_behavior', 'redirect' );
+function lcloak_send_block_response() {
+    $behavior = (string) get_option( 'lcloak_block_behavior', '' );
+    if ( $behavior === '' ) {
+        $behavior = (string) get_option( 'slp_block_behavior', 'redirect' );
+    }
     switch ( $behavior ) {
         case '404':
             if ( ! headers_sent() ) {
@@ -23,8 +33,8 @@ function slp_send_block_response() {
                 status_header( 404 );
             }
             wp_die(
-                esc_html__( 'Not Found', 'secure-login-path' ),
-                esc_html__( 'Not Found', 'secure-login-path' ),
+                esc_html__( 'Not Found', 'login-cloak' ),
+                esc_html__( 'Not Found', 'login-cloak' ),
                 [ 'response' => 404 ]
             );
             break;
@@ -34,8 +44,8 @@ function slp_send_block_response() {
                 status_header( 403 );
             }
             wp_die(
-                esc_html__( 'Forbidden', 'secure-login-path' ),
-                esc_html__( 'Forbidden', 'secure-login-path' ),
+                esc_html__( 'Forbidden', 'login-cloak' ),
+                esc_html__( 'Forbidden', 'login-cloak' ),
                 [ 'response' => 403 ]
             );
             break;

@@ -1,24 +1,24 @@
-=== Secure Login Path ===
+=== Login Cloak ===
 Contributors: axielroque
 Tags: security, login, admin, hardening
 Requires at least: 6.0
 Requires PHP: 7.4
 Tested up to: 6.9
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Secure and customize your WordPress login URL without touching core files.
-Includes recovery mode and random path generator.
+Hide and protect your WordPress login URL without touching core files.
+Includes recovery mode and a random path generator.
 
 == Description ==
 
-Secure Login Path lets you hide the default WordPress login and admin URLs by using a custom slug, e.g. `https://example.com/your-custom-path/`.
+Login Cloak lets you hide the default WordPress login and admin URLs by using a custom slug, e.g. `https://example.com/your-custom-path/`.
 It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged users, while keeping essential endpoints working (AJAX and admin-post).
 
 == Features ==
 
-- Custom login slug shown in Settings → Secure Login Path
+- Custom login slug shown in Settings → Login Cloak
 - One-click random path generator
 - Blocks direct access to `wp-login.php`
 - Blocks `wp-admin/` for visitors (while allowing AJAX and admin-post)
@@ -27,7 +27,7 @@ It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged user
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/` and activate it.
-2. Go to Settings → Secure Login Path.
+2. Go to Settings → Login Cloak.
 3. Set your custom login path or click “Generate Random Path”.
 4. Use the displayed Login URL to access your site.
 
@@ -41,7 +41,9 @@ It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged user
 
 If you get locked out or need to bypass the protection temporarily, append the recovery parameter to the default login URL:
 
-`https://example.com/wp-login.php?slp-recover=1`
+`https://example.com/wp-login.php?lcloak-recover=1`
+
+Note: For legacy compatibility, the `slp-recover=1` parameter is also supported.
 
 This disables the blocking logic only for that request so you can log in.
 
@@ -51,7 +53,7 @@ This disables the blocking logic only for that request so you can log in.
 - Front-end forms using `admin-post.php` (including `nopriv_*` actions) remain functional.
 - Cron runs (`wp_doing_cron()`) are not blocked.
 
-If you have a custom endpoint inside `wp-admin/` that must remain accessible to visitors, you can allowlist its script via the `slp_allowed_admin_scripts` filter.
+If you have a custom endpoint inside `wp-admin/` that must remain accessible to visitors, you can allowlist its script via the `lcloak_allowed_admin_scripts` filter. Note that the legacy filter name `slp_allowed_admin_scripts` is also supported for backwards compatibility.
 
 == Uninstall ==
 
@@ -61,13 +63,17 @@ Deactivating the plugin restores normal rewrite rules. If you also remove the pl
 
 Q: I forgot my custom login path. How can I log in?
 
-A: Use the recovery URL: `https://example.com/wp-login.php?slp-recover=1`.
+A: Use the recovery URL: `https://example.com/wp-login.php?lcloak-recover=1`.
 
 Q: My front-end form stopped working.
 
 A: Ensure it posts to `admin-post.php` and that your `nopriv_*` action is registered. Those routes are allowlisted by default.
 
 == Changelog ==
+
+= 1.1.1 =
+- Rename plugin branding to Login Cloak and update text domain.
+- Update prefixes to avoid collisions and improve compatibility.
 
 = 1.1.0 =
 - Initial public version with recovery mode, random path generator, and admin/AJAX compatibility.

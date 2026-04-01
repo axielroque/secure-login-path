@@ -5,7 +5,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Option name(s) used by the plugin
-$option_names = array( 'slp_login_slug', 'slp_block_behavior' );
+$option_names = array( 'lcloak_login_slug', 'lcloak_block_behavior', 'slp_login_slug', 'slp_block_behavior' );
 
 if ( is_multisite() ) {
     $sites = function_exists( 'get_sites' ) ? get_sites() : array();
