@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Login Cloak
+Plugin Name: Login Cloak – Hide & Protect Your WordPress Login URL
 Plugin URI: https://github.com/axielroque/secure-login-path
-Description: Hide and protect the default WordPress login URLs by using a custom login path.
+Description: Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
 Version: 1.1.1
 Author: Axiel Roque
 Author URI: https://github.com/axielroque

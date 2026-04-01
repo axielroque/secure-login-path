@@ -1,4 +1,4 @@
-=== Login Cloak ===
+=== Login Cloak – Hide & Protect Your WordPress Login URL ===
 Contributors: axielroque
 Tags: security, login, admin, hardening
 Requires at least: 6.0
@@ -8,12 +8,12 @@ Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Hide and protect your WordPress login URL without touching core files.
-Includes recovery mode and a random path generator.
+Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
 
 == Description ==
 
-Login Cloak lets you hide the default WordPress login and admin URLs by using a custom slug, e.g. `https://example.com/your-custom-path/`.
+Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
+
 It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged users, while keeping essential endpoints working (AJAX and admin-post).
 
 == Features ==
