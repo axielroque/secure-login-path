@@ -27,6 +27,19 @@ Hide and protect the default WordPress login and admin URLs by defining a secret
 4. Choose a secret slug (e.g., `my-super-secret-login`). Save changes.
 5. Visit the new login URL shown on the settings page.
 
+## Build ZIP
+
+From the plugin folder, you can generate a distributable ZIP (without hidden files) using:
+
+```bash
+chmod +x build-wporg-zip.sh
+./build-wporg-zip.sh
+```
+
+By default, the ZIP is created at:
+
+`./login-cloak-<version>.zip`
+
 ## How it works
 
 - A rewrite rule maps your secret path to `index.php?lcloak_login=1` and the plugin includes `wp-login.php` internally.
