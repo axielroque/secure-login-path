@@ -47,7 +47,6 @@ function lcloak_intercept_direct_login() {
     $action = sanitize_key( (string) filter_input( INPUT_GET, 'action', FILTER_UNSAFE_RAW ) );
     $allowed_actions = [ 'lostpassword', 'rp', 'resetpass', 'register', 'logout', 'postpass', 'verifyemail', 'confirm_admin_email', 'reauth' ];
     $allowed_actions = (array) apply_filters( 'lcloak_allowed_login_actions', $allowed_actions, $action );
-    $allowed_actions = (array) apply_filters( 'slp_allowed_login_actions', $allowed_actions, $action );
     if ( in_array( $action, $allowed_actions, true ) ) {
         return;
     }

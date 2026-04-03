@@ -61,9 +61,7 @@ function lcloak_register_settings() {
 function lcloak_sanitize_login_slug( $value ) {
     $value = sanitize_title( (string) $value );
     $forbidden = (array) apply_filters( 'lcloak_forbidden_login_slugs', [ 'login', 'wp-login', 'admin', 'wp-admin', 'wp-login.php' ] );
-    $forbidden = (array) apply_filters( 'slp_forbidden_login_slugs', $forbidden );
     $min_length = (int) apply_filters( 'lcloak_min_login_slug_length', 6 );
-    $min_length = (int) apply_filters( 'slp_min_login_slug_length', $min_length );
     if ( $value === '' || in_array( $value, $forbidden, true ) || strlen( $value ) < $min_length ) {
         add_settings_error( 'lcloak_settings', 'lcloak_invalid_slug', __( 'Invalid login path. Choose a longer, non-obvious value.', 'axiel-secure-login-path' ), 'error' );
         return (string) get_option( 'lcloak_login_slug' );

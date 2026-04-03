@@ -16,7 +16,6 @@ function lcloak_intercept_wp_admin() {
 
     $script_name = isset( $_SERVER['SCRIPT_NAME'] ) ? basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) : '';
     $allowed_scripts = apply_filters( 'lcloak_allowed_admin_scripts', [ 'admin-ajax.php', 'admin-post.php' ] );
-    $allowed_scripts = apply_filters( 'slp_allowed_admin_scripts', $allowed_scripts );
     $is_allowed_script = in_array( $script_name, $allowed_scripts, true );
     $is_cron = function_exists( 'wp_doing_cron' ) && wp_doing_cron();
 
@@ -28,13 +27,16 @@ function lcloak_intercept_wp_admin() {
 /**
  * Block wp-admin for non-authenticated users.
  */
-add_action( 'admin_init', 'lcloak_block_wp_admin' );
-function lcloak_block_wp_admin() {
+add_action( 'admin_init', 'lcloak_block_wp_admin_for_visitors' );
+function lcloak_block_wp_admin_for_visitors() {
     if ( lcloak_is_recovery_mode() ) return;
+
+    if ( is_user_logged_in() ) {
+        return;
+    }
 
     $script_name = isset( $_SERVER['SCRIPT_NAME'] ) ? basename( sanitize_text_field( wp_unslash( $_SERVER['SCRIPT_NAME'] ) ) ) : '';
     $allowed_scripts = apply_filters( 'lcloak_allowed_admin_scripts', [ 'admin-ajax.php', 'admin-post.php' ] );
-    $allowed_scripts = apply_filters( 'slp_allowed_admin_scripts', $allowed_scripts );
     $is_allowed_script = in_array( $script_name, $allowed_scripts, true );
     $is_cron = function_exists( 'wp_doing_cron' ) && wp_doing_cron();
 

@@ -8,7 +8,7 @@ Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
+Hide and protect your login URLs by replacing /wp-admin and /wp-login.php with a custom path to reduce brute-force attacks.
 
 == Description ==
 
@@ -44,7 +44,6 @@ If you get locked out or need to bypass the protection temporarily, append the r
 `https://example.com/wp-login.php?lcloak-recover=1`
 
 Note: For legacy compatibility, the `slp-recover=1` parameter is also supported.
-
 This disables the blocking logic only for that request so you can log in.
 
 == Compatibility ==
@@ -53,7 +52,7 @@ This disables the blocking logic only for that request so you can log in.
 - Front-end forms using `admin-post.php` (including `nopriv_*` actions) remain functional.
 - Cron runs (`wp_doing_cron()`) are not blocked.
 
-If you have a custom endpoint inside `wp-admin/` that must remain accessible to visitors, you can allowlist its script via the `lcloak_allowed_admin_scripts` filter. Note that the legacy filter name `slp_allowed_admin_scripts` is also supported for backwards compatibility.
+If you have a custom endpoint inside `wp-admin/` that must remain accessible to visitors, you can allowlist its script via the `lcloak_allowed_admin_scripts` filter.
 
 == Uninstall ==
 
