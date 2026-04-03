@@ -38,7 +38,7 @@ chmod +x build-wporg-zip.sh
 
 By default, the ZIP is created at:
 
-`~/Documents/login-cloak-<version>.zip`
+`./login-cloak-<version>.zip`
 
 ## How it works
 

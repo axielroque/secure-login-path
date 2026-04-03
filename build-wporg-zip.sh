@@ -11,7 +11,7 @@ if [[ -z "${VERSION}" ]]; then
   VERSION="dev"
 fi
 
-OUT_ZIP="${1:-$HOME/Documents/${PLUGIN_SLUG}-${VERSION}.zip}"
+OUT_ZIP="${1:-$PLUGIN_DIR/${PLUGIN_SLUG}-${VERSION}.zip}"
 
 rm -f "$OUT_ZIP"
 
