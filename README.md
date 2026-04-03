@@ -54,9 +54,6 @@ Hide and protect the default WordPress login and admin URLs by defining a secret
 - `lcloak_allowed_admin_scripts` (array): allow specific admin scripts for non‑logged‑in requests (default: `admin-ajax.php`, `admin-post.php`).
 - `lcloak_allowed_login_actions` (array): extend allowed `wp-login.php` actions when the default login URL is blocked (default includes: `lostpassword`, `rp`, `resetpass`, `register`, `logout`, `postpass`, `verifyemail`, `confirm_admin_email`, `reauth`). Receives current `$action` as second argument.
 
-Legacy compatibility:
-- The legacy filter names `slp_*` are still supported.
-
 ## Recovery Mode
 
 - Append `?lcloak-recover=1` to `wp-login.php` to temporarily bypass the block and access the default login.
@@ -70,7 +67,7 @@ Legacy compatibility:
 
 ## Internationalization
 
-- Text domain: `login-cloak`.
+- Text domain: `axiel-secure-login-path`.
 - `.po/.mo` files included in `languages/`.
 
 ## Uninstall
