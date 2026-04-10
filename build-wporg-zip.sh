@@ -22,6 +22,7 @@ mkdir -p "$STAGING_DIR/$WPORG_SLUG"
 
 /usr/bin/rsync -a \
   --exclude='.*' \
+  --exclude='*.zip' \
   --exclude='node_modules' \
   --exclude='vendor' \
   --exclude='tests' \
