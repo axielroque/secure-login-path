@@ -26,6 +26,12 @@ function lcloak_activate() {
         update_option( 'lcloak_login_slug', wp_generate_password( 14, false ) );
     }
 
+    if ( ! function_exists( 'lcloak_get_login_slug' ) ) {
+        require_once LCLOAK_PATH . 'includes/helpers.php';
+    }
+    if ( ! function_exists( 'lcloak_register_rewrite_rule' ) ) {
+        require_once LCLOAK_PATH . 'includes/rewrite.php';
+    }
     if ( function_exists( 'lcloak_register_rewrite_rule' ) ) {
         lcloak_register_rewrite_rule();
     }

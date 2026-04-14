@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'init', 'lcloak_register_rewrite_rule', 20 ); // priority 20
+add_action( 'init', 'lcloak_register_rewrite_rule', 1 );
 
 function lcloak_register_rewrite_rule() {
     $slug = lcloak_get_login_slug();
