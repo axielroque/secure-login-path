@@ -1,7 +1,7 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-add_action( 'init', 'lcloak_register_rewrite_rule', 20 ); // priority 20
+add_action( 'init', 'lcloak_register_rewrite_rule', 1 );
 
 function lcloak_register_rewrite_rule() {
     $slug = lcloak_get_login_slug();
@@ -75,7 +75,12 @@ function lcloak_intercept_direct_login() {
 add_action( 'parse_request', 'lcloak_mark_custom_login', 1 );
 function lcloak_mark_custom_login( $wp ) {
     if ( ( isset( $wp->query_vars['lcloak_login'] ) && $wp->query_vars['lcloak_login'] ) || ( isset( $wp->query_vars['slp_login'] ) && $wp->query_vars['slp_login'] ) ) {
-        define( 'LCLOAK_CUSTOM_LOGIN', true );
+        if ( ! defined( 'GHOSTGATE_CUSTOM_LOGIN' ) ) {
+            define( 'GHOSTGATE_CUSTOM_LOGIN', true );
+        }
+        if ( ! defined( 'LCLOAK_CUSTOM_LOGIN' ) ) {
+            define( 'LCLOAK_CUSTOM_LOGIN', true );
+        }
     }
 }
 

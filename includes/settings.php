@@ -6,10 +6,10 @@ add_action( 'admin_init', 'lcloak_register_settings' );
 
 function lcloak_add_settings_page() {
     add_options_page(
-        __( 'RoqWarden Login Path', 'axiel-secure-login-path' ),
-        __( 'RoqWarden Login Path', 'axiel-secure-login-path' ),
+        __( 'GhostGate', 'axiel-secure-login-path' ),
+        __( 'GhostGate', 'axiel-secure-login-path' ),
         'manage_options',
-        'roqwarden-login-path',
+        'ghostgate',
         'lcloak_render_settings_page'
     );
 }
@@ -109,7 +109,7 @@ function lcloak_render_settings_page() {
     $behavior = get_option( 'lcloak_block_behavior', 'redirect' );
     ?>
     <div class="wrap">
-        <h1><?php echo esc_html__( 'RoqWarden Login Path', 'axiel-secure-login-path' ); ?></h1>
+        <h1><?php echo esc_html__( 'GhostGate', 'axiel-secure-login-path' ); ?></h1>
         <?php settings_errors( 'lcloak_settings' ); ?>
 
         <p>

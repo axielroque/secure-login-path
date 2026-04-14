@@ -4,7 +4,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PLUGIN_DIR="$SCRIPT_DIR"
 PLUGIN_SLUG="$(basename "$PLUGIN_DIR")"
-WPORG_SLUG="roqwarden-login-path"
+WPORG_SLUG="ghostgate"
 
 VERSION="$(grep -E '^Version:' "$PLUGIN_DIR/$PLUGIN_SLUG.php" | head -n1 | sed -E 's/^Version:[[:space:]]*//')"
 if [[ -z "${VERSION}" ]]; then
@@ -15,7 +15,7 @@ OUT_ZIP="${1:-$PLUGIN_DIR/${WPORG_SLUG}-${VERSION}.zip}"
 
 rm -f "$OUT_ZIP"
 
-STAGING_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t roqwarden_zip)"
+STAGING_DIR="$(mktemp -d 2>/dev/null || mktemp -d -t ghostgate_zip)"
 trap 'rm -rf "$STAGING_DIR"' EXIT
 
 mkdir -p "$STAGING_DIR/$WPORG_SLUG"
