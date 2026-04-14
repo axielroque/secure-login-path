@@ -1,4 +1,4 @@
-=== Login Cloak – Hide & Protect Your Login URL ===
+=== GhostGate ===
 Contributors: axielroque
 Tags: security, login, admin, hardening
 Requires at least: 6.0
@@ -12,13 +12,13 @@ Hide and protect your login URLs by replacing /wp-admin and /wp-login.php with a
 
 == Description ==
 
-Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
+GhostGate helps you secure your WordPress website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom access path known only to you.
 
 It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged users, while keeping essential endpoints working (AJAX and admin-post).
 
 == Features ==
 
-- Custom login slug shown in Settings → Login Cloak
+- Custom login slug shown in Settings → GhostGate
 - One-click random path generator
 - Blocks direct access to `wp-login.php`
 - Blocks `wp-admin/` for visitors (while allowing AJAX and admin-post)
@@ -27,7 +27,7 @@ It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged user
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/` and activate it.
-2. Go to Settings → Login Cloak.
+2. Go to Settings → GhostGate.
 3. Set your custom login path or click “Generate Random Path”.
 4. Use the displayed Login URL to access your site.
 

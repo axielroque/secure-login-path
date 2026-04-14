@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Login Cloak – Hide & Protect Your Login URL
+Plugin Name: GhostGate – Protect & Hide Your WordPress Login Access
 Plugin URI: https://github.com/axielroque/login-cloak
-Description: Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
+Description: GhostGate helps you secure your WordPress website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom access path known only to you.
 Version: 1.1.1
 Author: Axiel Roque
 Author URI: https://github.com/axielroque
