@@ -70,7 +70,7 @@ A: Ensure it posts to `admin-post.php` and that your `nopriv_*` action is regist
 == Changelog ==
 
 = 1.1.1 =
-- Rename plugin branding to Login Cloak and update text domain.
+- Rename plugin branding to RoqWarden Login Path and update text domain.
 - Update prefixes to avoid collisions and improve compatibility.
 
 = 1.1.0 =
