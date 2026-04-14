@@ -1,4 +1,4 @@
-=== Login Cloak – Hide & Protect Your Login URL ===
+=== RoqWarden Login Path ===
 Contributors: axielroque
 Tags: security, login, admin, hardening
 Requires at least: 6.0
@@ -12,13 +12,13 @@ Hide and protect your login URLs by replacing /wp-admin and /wp-login.php with a
 
 == Description ==
 
-Login Cloak helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
+RoqWarden Login Path helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
 
 It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged users, while keeping essential endpoints working (AJAX and admin-post).
 
 == Features ==
 
-- Custom login slug shown in Settings → Login Cloak
+- Custom login slug shown in Settings → RoqWarden Login Path
 - One-click random path generator
 - Blocks direct access to `wp-login.php`
 - Blocks `wp-admin/` for visitors (while allowing AJAX and admin-post)
@@ -27,7 +27,7 @@ It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged user
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/` and activate it.
-2. Go to Settings → Login Cloak.
+2. Go to Settings → RoqWarden Login Path.
 3. Set your custom login path or click “Generate Random Path”.
 4. Use the displayed Login URL to access your site.
 
@@ -70,7 +70,7 @@ A: Ensure it posts to `admin-post.php` and that your `nopriv_*` action is regist
 == Changelog ==
 
 = 1.1.1 =
-- Rename plugin branding to Login Cloak and update text domain.
+- Rename plugin branding to RoqWarden Login Path and update text domain.
 - Update prefixes to avoid collisions and improve compatibility.
 
 = 1.1.0 =
