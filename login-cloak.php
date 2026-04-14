@@ -13,11 +13,19 @@ Text Domain: axiel-secure-login-path
 defined( 'ABSPATH' ) || exit;
 
 // Plugin constants
-define( 'LCLOAK_PATH', plugin_dir_path( __FILE__ ) );
-define( 'LCLOAK_URL', plugin_dir_url( __FILE__ ) );
+define( 'GHOSTGATE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'GHOSTGATE_URL', plugin_dir_url( __FILE__ ) );
+
+// Backward-compatible aliases
+if ( ! defined( 'LCLOAK_PATH' ) ) {
+    define( 'LCLOAK_PATH', GHOSTGATE_PATH );
+}
+if ( ! defined( 'LCLOAK_URL' ) ) {
+    define( 'LCLOAK_URL', GHOSTGATE_URL );
+}
 
 // Load bootstrap
-require_once LCLOAK_PATH . 'includes/bootstrap.php';
+require_once GHOSTGATE_PATH . 'includes/bootstrap.php';
 
 // Activation
 register_activation_hook( __FILE__, 'lcloak_activate' );
@@ -27,10 +35,10 @@ function lcloak_activate() {
     }
 
     if ( ! function_exists( 'lcloak_get_login_slug' ) ) {
-        require_once LCLOAK_PATH . 'includes/helpers.php';
+        require_once GHOSTGATE_PATH . 'includes/helpers.php';
     }
     if ( ! function_exists( 'lcloak_register_rewrite_rule' ) ) {
-        require_once LCLOAK_PATH . 'includes/rewrite.php';
+        require_once GHOSTGATE_PATH . 'includes/rewrite.php';
     }
     if ( function_exists( 'lcloak_register_rewrite_rule' ) ) {
         lcloak_register_rewrite_rule();
