@@ -1,4 +1,4 @@
-=== RoqWarden Login Path ===
+=== Logkit ===
 Contributors: axielroque
 Tags: security, login, admin, hardening
 Requires at least: 6.0
@@ -12,13 +12,13 @@ Hide and protect your login URLs by replacing /wp-admin and /wp-login.php with a
 
 == Description ==
 
-RoqWarden Login Path helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
+Logkit helps you secure your website by hiding the default login URLs (/wp-admin and /wp-login.php) and replacing them with a custom path only you know. This simple change can dramatically reduce brute-force attacks and unauthorized access attempts.
 
 It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged users, while keeping essential endpoints working (AJAX and admin-post).
 
 == Features ==
 
-- Custom login slug shown in Settings → RoqWarden Login Path
+- Custom login slug shown in Settings → Logkit
 - One-click random path generator
 - Blocks direct access to `wp-login.php`
 - Blocks `wp-admin/` for visitors (while allowing AJAX and admin-post)
@@ -27,7 +27,7 @@ It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged user
 == Installation ==
 
 1. Upload the plugin to `/wp-content/plugins/` and activate it.
-2. Go to Settings → RoqWarden Login Path.
+2. Go to Settings → Logkit.
 3. Set your custom login path or click “Generate Random Path”.
 4. Use the displayed Login URL to access your site.
 
@@ -41,7 +41,7 @@ It blocks direct access to `wp-login.php` and to `wp-admin/` for non-logged user
 
 If you get locked out or need to bypass the protection temporarily, append the recovery parameter to the default login URL:
 
-`https://example.com/wp-login.php?lcloak-recover=1`
+`https://example.com/wp-login.php?logkit-recover=1`
 
 This disables the blocking logic only for that request so you can log in.
 
@@ -51,7 +51,7 @@ This disables the blocking logic only for that request so you can log in.
 - Front-end forms using `admin-post.php` (including `nopriv_*` actions) remain functional.
 - Cron runs (`wp_doing_cron()`) are not blocked.
 
-If you have a custom endpoint inside `wp-admin/` that must remain accessible to visitors, you can allowlist its script via the `lcloak_allowed_admin_scripts` filter.
+If you have a custom endpoint inside `wp-admin/` that must remain accessible to visitors, you can allowlist its script via the `logkit_allowed_admin_scripts` filter.
 
 == Uninstall ==
 
@@ -61,7 +61,7 @@ Deactivating the plugin restores normal rewrite rules. If you also remove the pl
 
 Q: I forgot my custom login path. How can I log in?
 
-A: Use the recovery URL: `https://example.com/wp-login.php?lcloak-recover=1`.
+A: Use the recovery URL: `https://example.com/wp-login.php?logkit-recover=1`.
 
 Q: My front-end form stopped working.
 
@@ -70,7 +70,7 @@ A: Ensure it posts to `admin-post.php` and that your `nopriv_*` action is regist
 == Changelog ==
 
 = 1.1.1 =
-- Rename plugin branding to RoqWarden Login Path and update text domain.
+- Rename plugin branding to Logkit and update text domain.
 - Update prefixes to avoid collisions and improve compatibility.
 
 = 1.1.0 =

@@ -1,31 +1,22 @@
 <?php
 defined( 'ABSPATH' ) || exit;
 
-function lcloak_get_login_slug() {
-    $slug = get_option( 'lcloak_login_slug' );
-    if ( ! $slug ) {
-        $slug = get_option( 'slp_login_slug' );
-    }
+function logkit_get_login_slug() {
+    $slug = get_option( 'logkit_login_slug' );
     return sanitize_title( (string) $slug );
 }
 
-function lcloak_generate_random_slug() {
+function logkit_generate_random_slug() {
     return wp_generate_password( 14, false );
 }
 
-function lcloak_is_recovery_mode() {
-    $recover = filter_input( INPUT_GET, 'lcloak-recover', FILTER_SANITIZE_NUMBER_INT );
-    if ( $recover === null ) {
-        $recover = filter_input( INPUT_GET, 'slp-recover', FILTER_SANITIZE_NUMBER_INT );
-    }
+function logkit_is_recovery_mode() {
+    $recover = filter_input( INPUT_GET, 'logkit-recover', FILTER_SANITIZE_NUMBER_INT );
     return $recover === '1';
 }
 
-function lcloak_send_block_response() {
-    $behavior = (string) get_option( 'lcloak_block_behavior', '' );
-    if ( $behavior === '' ) {
-        $behavior = (string) get_option( 'slp_block_behavior', 'redirect' );
-    }
+function logkit_send_block_response() {
+    $behavior = (string) get_option( 'logkit_block_behavior', 'redirect' );
     switch ( $behavior ) {
         case '404':
             if ( ! headers_sent() ) {
@@ -33,8 +24,8 @@ function lcloak_send_block_response() {
                 status_header( 404 );
             }
             wp_die(
-                esc_html__( 'Not Found', 'axiel-secure-login-path' ),
-                esc_html__( 'Not Found', 'axiel-secure-login-path' ),
+                esc_html__( 'Not Found', 'logkit' ),
+                esc_html__( 'Not Found', 'logkit' ),
                 [ 'response' => 404 ]
             );
             break;
@@ -44,8 +35,8 @@ function lcloak_send_block_response() {
                 status_header( 403 );
             }
             wp_die(
-                esc_html__( 'Forbidden', 'axiel-secure-login-path' ),
-                esc_html__( 'Forbidden', 'axiel-secure-login-path' ),
+                esc_html__( 'Forbidden', 'logkit' ),
+                esc_html__( 'Forbidden', 'logkit' ),
                 [ 'response' => 403 ]
             );
             break;

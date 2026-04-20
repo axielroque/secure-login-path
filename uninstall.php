@@ -5,22 +5,22 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 }
 
 // Option name(s) used by the plugin
-$lcloak_option_names = array( 'lcloak_login_slug', 'lcloak_block_behavior' );
+$logkit_option_names = array( 'logkit_login_slug', 'logkit_block_behavior' );
 
 if ( is_multisite() ) {
-    $lcloak_sites = function_exists( 'get_sites' ) ? get_sites() : array();
-    if ( $lcloak_sites ) {
-        foreach ( $lcloak_sites as $lcloak_site ) {
-            $blog_id = is_object( $lcloak_site ) ? $lcloak_site->blog_id : (int) $lcloak_site['blog_id'];
+    $logkit_sites = function_exists( 'get_sites' ) ? get_sites() : array();
+    if ( $logkit_sites ) {
+        foreach ( $logkit_sites as $logkit_site ) {
+            $blog_id = is_object( $logkit_site ) ? $logkit_site->blog_id : (int) $logkit_site['blog_id'];
             switch_to_blog( $blog_id );
-            foreach ( $lcloak_option_names as $lcloak_option_name ) {
-                delete_option( $lcloak_option_name );
+            foreach ( $logkit_option_names as $logkit_option_name ) {
+                delete_option( $logkit_option_name );
             }
             restore_current_blog();
         }
     }
 } else {
-    foreach ( $lcloak_option_names as $lcloak_option_name ) {
-        delete_option( $lcloak_option_name );
+    foreach ( $logkit_option_names as $logkit_option_name ) {
+        delete_option( $logkit_option_name );
     }
 }
